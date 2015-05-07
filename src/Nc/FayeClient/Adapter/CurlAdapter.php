@@ -6,6 +6,9 @@
 
 namespace Nc\FayeClient\Adapter;
 
+
+use Nc\FayeClient\Exception\AdapterException
+
 /**
  * Curl adapter to make a post request
  */
