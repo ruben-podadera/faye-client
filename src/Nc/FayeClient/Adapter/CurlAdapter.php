@@ -28,9 +28,18 @@ class CurlAdapter implements AdapterInterface
             'Content-Type: application/json',
             'Content-Length: ' . strlen($body),
         ));
-        
-        curl_exec($curl);
-        
+
+        $result = curl_exec($curl);
+        $error = null;
+
+        if (!$result) {
+            $error = curl_error($curl);
+        }
+
         curl_close($curl);
+
+        if ($error) {
+            throw new AdapterException($error);
+        }
     }
 }
